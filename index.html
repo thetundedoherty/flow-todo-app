@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowDo — Do something great today</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <main class="container">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✨</span> FlowDo</div>
+      <button id="theme-btn" type="button" title="Toggle dark / light">🌙</button>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow" id="today-line">Today</p>
+      <h1>Make today <em>amazing.</em></h1>
+      <p class="quote">“<span id="quote">Small steps every day.</span>” <button id="new-quote" type="button" title="New inspiration">↻</button></p>
+      <div class="progress-wrap">
+        <div class="progress-top"><span id="progress-text">0% complete</span><span id="streak">🔥 0-day streak</span></div>
+        <div class="progress-bar"><div id="progress-fill"></div></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span>📋</span><div><strong id="stat-total">0</strong><small>Total</small></div></div>
+      <div class="stat"><span>⏳</span><div><strong id="stat-progress">0</strong><small>Active</small></div></div>
+      <div class="stat"><span>✅</span><div><strong id="stat-done">0</strong><small>Done</small></div></div>
+      <div class="stat alert"><span>⚠️</span><div><strong id="stat-overdue">0</strong><small>Overdue</small></div></div>
+    </section>
+
+    <form id="todo-form" class="todo-form">
+      <div class="toolbar" role="toolbar" aria-label="Rich text formatting">
+        <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
+        <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
+        <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+        <button type="button" data-cmd="strikeThrough" title="Strike"><s>S</s></button>
+        <button type="button" data-cmd="insertUnorderedList" title="Bullets">• List</button>
+        <button type="button" id="hilite-btn" title="Highlight">🖍️</button>
+        <button type="button" data-cmd="removeFormat" title="Clear">🧹</button>
+      </div>
+      <div class="input-row">
+        <div id="todo-input" contenteditable="true" data-placeholder="Describe your next win… or click 🎤 to speak…"></div>
+        <button type="button" id="mic-btn" title="Voice to text">🎤</button>
+        <button type="submit" class="add-btn" id="add-btn">Add ✦</button>
+      </div>
+      <p id="voice-status" class="voice-status hidden">🔴 Listening... speak now</p>
+      <p class="hint">💡 Rich text supported — select text, then B / I / U / list / highlight.</p>
+      <div class="options-row">
+        <label class="date-label" title="Due date (Calendar)">
+          📅 <input type="date" id="todo-date" />
+        </label>
+        <select id="todo-priority" title="Priority level">
+          <option value="low">🟢 Low</option>
+          <option value="medium" selected>🟡 Medium</option>
+          <option value="high">🔴 High</option>
+        </select>
+        <select id="todo-status" title="Status">
+          <option value="todo" selected>📌 To Do</option>
+          <option value="in-progress">⏳ In Progress</option>
+          <option value="completed">✅ Completed</option>
+        </select>
+        <button type="button" id="cancel-edit" class="hidden">Cancel ✕</button>
+      </div>
+    </form>
+
+    <div class="controls">
+      <input type="text" id="search" placeholder="🔍 Search tasks..." autocomplete="off" />
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="todo">To Do</button>
+        <button class="filter-btn" data-filter="in-progress">In Progress</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+      <div class="controls-row">
+        <select id="priority-filter" title="Filter by priority">
+          <option value="all">All priorities</option>
+          <option value="high">🔴 High</option>
+          <option value="medium">🟡 Medium</option>
+          <option value="low">🟢 Low</option>
+        </select>
+        <select id="sort-by" title="Sort tasks">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="due">By due date</option>
+          <option value="priority">By priority</option>
+        </select>
+      </div>
+      <div class="controls-row">
+        <label class="calendar-filter-label" title="Calendar: show tasks due on a date">
+          📅 <input type="date" id="calendar-filter" />
+        </label>
+        <button id="clear-date" type="button">Clear date ✕</button>
+      </div>
+    </div>
+
+    <ul id="todo-list" class="todo-list"></ul>
+
+    <div class="footer">
+      <span id="count">0 tasks left</span>
+      <button id="clear-completed">Clear completed</button>
+    </div>
+    <p class="celebrate hidden" id="celebrate">🎉 All clear! You earned a breath. 🎉</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
